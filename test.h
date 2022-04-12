@@ -8,9 +8,13 @@
 */
 void runVectorIntTESTS();
 
-/* tests newVectorInt and newFillVectorInt functions
+/* test newVectorInt and newFillVectorInt functions
 */
 void newVectorIntTEST();
+
+/* test copyVectorInt function
+*/
+void copyVectorIntTEST();
 #endif
 
 #endif

@@ -30,7 +30,8 @@ void destroyVectorInt(VectorInt* v);
 
 /* Copies src_v from dst_v
 */
-void copyVectorInt(VectorInt *src_v, struct VectorInt *dst_v);
+void copyVectorInt(VectorInt *src_v, struct VectorInt **dst_v);
+
 
 #if _DEBUG
 void printVectorInt(VectorInt *v);

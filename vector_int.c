@@ -1,5 +1,6 @@
 #include "stdlib.h"
 #include "stdio.h"
+#include "string.h"
 
 #include "vector_int.h"
 
@@ -42,16 +43,20 @@ VectorInt* newFillVectorInt(unsigned long sz, int value)
     return  v;
 }
 
-void copyVectorInt(VectorInt *src_v, struct VectorInt *dst_v)
+void copyVectorInt(VectorInt *src_v, struct VectorInt **dst_v)
 {
     /* empty data */
-    destroyVectorInt(src_v);
+    if(!*dst_v) *dst_v = (VectorInt *) malloc(sizeof(VectorInt));
+    destroyVectorInt(*dst_v);
 
-    src_v->capacity = dst_v->capacity;
-    src_v->original_capacity = dst_v->original_capacity;
-    src_v->size = dst_v->size;
-    if(src_v->size)
-        src_v->data = (int *) malloc(sizeof(int) * src_v->capacity);
+    (*dst_v)->capacity = src_v->capacity;
+    (*dst_v)->original_capacity = src_v->original_capacity;
+    (*dst_v)->size = src_v->size;
+    if((*dst_v)->size)
+    {
+        (*dst_v)->data = (int *) malloc(sizeof(int) * (*dst_v)->capacity);
+        memcpy((*dst_v)->data, src_v->data, (*dst_v)->size);
+    }
 }
 
 #ifdef _DEBUG
