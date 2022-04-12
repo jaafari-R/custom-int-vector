@@ -15,10 +15,9 @@ struct VectorInt
 VectorInt* newVectorInt(unsigned long sz)
 {
     VectorInt *v = (VectorInt *) malloc(sizeof(VectorInt));
-    if(sz < 0) sz = 0;
 
     v->capacity = sz;
-    v->original_capacity = sz;
+    v->original_capacity = sz ? sz : 1;
     v->size = 0;
     v->data = NULL;
     return v;
@@ -32,15 +31,14 @@ void destroyVectorInt(VectorInt* v)
 VectorInt* newFillVectorInt(unsigned long sz, int value)
 {
     VectorInt *v = (VectorInt *) malloc(sizeof(VectorInt));
-    if(sz < 0) sz = 0;
 
     v->capacity = sz;
-    v->original_capacity = sz;
+    v->original_capacity = sz ? sz : 1;
     v->size = sz;
     v->data = (int *) malloc(sizeof(int)  * sz);
     /* fill vector with val */
     while(sz--)
-        *(v->data+sz) = value;
+        v->data[sz] = value;
     return  v;
 }
 
@@ -60,11 +58,16 @@ void copyVectorInt(VectorInt *src_v, struct VectorInt *dst_v)
 void printVectorInt(VectorInt * v)
 {
     unsigned long i;
-    printf("vector_size = %lu, vector_capacity = %lu, vector_original_capacity = %lu, vector_data = %lu,\n", v->size,
+    printf("vector_size = %lu, vector_capacity = %lu, vector_original_capacity = %lu, vector_data = %lu, data:\n", v->size,
         v->capacity, v->original_capacity, (unsigned long)(v->data));
     printf("[ ");
-    for(i = 0; i < v->size - 1; i++)
-        printf("item %lu = %d, ", i, v->data[i]);
-    printf("item %lu = %d ]\n", i, v->data[i]);
+    if(!v->size) 
+    {
+        printf("]\n");
+        return;
+    }
+    for(i = 0; i < v->size - 1; ++i)
+        printf("%d, ", v->data[i]);
+    printf("%d ]\n", v->data[i]);
 }
 #endif /* _DEBUG */

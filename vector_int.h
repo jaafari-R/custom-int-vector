@@ -12,13 +12,14 @@
 typedef struct VectorInt VectorInt;
 
 /* Constructs an int vector with it's original capacity set to sz
-    if sz < 0, sz is set to 0
+    if sz is set to 0 the vector is empty, and original capacity is set to 1.
+    make sure that sz is not negative, it will be converted to unsigned long
 */
 VectorInt* newVectorInt(unsigned long sz);
 
 /* Constructs an int vector with original capacity sz, and fill it with value
-    if sz is set to 0 the vector is empty.
-    if sz < 0, sz is set to 0
+    if sz is set to 0 the vector is empty, and original capacity is set to 1.
+    make sure that sz is not negative, it will be converted to unsigned long
 */
 VectorInt*  newFillVectorInt(unsigned long sz, int value);
 
