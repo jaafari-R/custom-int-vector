@@ -29,4 +29,8 @@ VectorInt*  newFillVectorInt(unsigned long long sz, int value);
 */
 void copyVectorInt(VectorInt *src_v, struct VectorInt *dst_v);
 
+#if _DEBUG
+void vectorPrint(VectorInt *v);
+#endif
+
 #endif
