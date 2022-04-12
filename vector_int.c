@@ -59,8 +59,8 @@ void vectorPrint(VectorInt * v)
     printf("vector_size = %llu, vector_capacity = %llu, vector_original_capacity = %llu, vector_data = %llu,\n", v->size,
         v->capacity, v->original_capacity, (unsigned long long)(v->data));
     printf("[ ")
-    for(i = 0; i < vector->size - 1; i++)
-        printf("item %lu = %d, ", i, vector->data[i]);
-    printf("item %lu = %d ]\n", i, vector->data[i]);
+    for(i = 0; i < v->size - 1; i++)
+        printf("item %lu = %d, ", i, v->data[i]);
+    printf("item %lu = %d ]\n", i, v->data[i]);
 }
 #endif /* _DEBUG */
