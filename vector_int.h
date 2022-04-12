@@ -13,17 +13,17 @@ typedef struct VectorInt VectorInt;
 
 /* Constructs an int vector with it's original capacity set to sz
 */
-VectorInt* newVectorInt(unsigned long long sz);
+VectorInt* newVectorInt(unsigned long sz);
+
+/* Constructs an int vector with original capacity sz, and fill it with value
+    if sz is set to 0 the vector is empty.
+*/
+VectorInt*  newFillVectorInt(unsigned long sz, int value);
 
 /* Destroys a VectorInt, 
    Must be called before the program ends, not calling it will cause a memory leak. 
 */
 void destroyVectorInt(VectorInt* v);
-
-/* Constructs an int vector with original capacity sz, and fill it with value
-    if sz is set to 0 the vector is empty.
-*/
-VectorInt*  newFillVectorInt(unsigned long long sz, int value);
 
 /* Copies src_v from dst_v
 */

@@ -3,6 +3,7 @@
 
 #include "vector_int.h"
 
+#ifdef _DEBUG
 /* Runs all VectorInt tests 
 */
 void runVectorIntTESTS();
@@ -10,5 +11,6 @@ void runVectorIntTESTS();
 /* tests newVectorInt and newFillVectorInt functions
 */
 void newVectorIntTEST();
+#endif
 
 #endif

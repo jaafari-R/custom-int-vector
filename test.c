@@ -1,6 +1,7 @@
 #include "test.h"
 #include "vector_int.h"
 
+#ifdef _DEBUG
 void runVectorIntTESTS()
 {
     newVectorIntTEST();
@@ -25,3 +26,4 @@ void newVectorIntTEST()
     printVectorInt(v6);
     printVectorInt(v7);
 }
+#endif
