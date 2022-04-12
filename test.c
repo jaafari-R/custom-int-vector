@@ -25,5 +25,13 @@ void newVectorIntTEST()
     printVectorInt(v5);
     printVectorInt(v6);
     printVectorInt(v7);
+
+    destroyVectorInt(v1);
+    destroyVectorInt(v2);
+    destroyVectorInt(v3);
+    destroyVectorInt(v4);
+    destroyVectorInt(v5);
+    destroyVectorInt(v6);
+    destroyVectorInt(v7);
 }
 #endif
