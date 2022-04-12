@@ -32,6 +32,16 @@ void destroyVectorInt(VectorInt* v);
 */
 void copyVectorInt(VectorInt *src_v, struct VectorInt **dst_v);
 
+/* Adds an int to the end of the vector
+   Doubles vector capacity if the push is done when the vector size is equal to capacity
+*/
+void pushVectorInt(VectorInt *vector, int value);
+
+/* Removes the int at the end of the vector and returns it
+   halfs vector capacity if the pop is done when the vector size is less than third of the capacity
+*/
+int popVectorInt(VectorInt *vector);
+ 
 
 #if _DEBUG
 void printVectorInt(VectorInt *v);

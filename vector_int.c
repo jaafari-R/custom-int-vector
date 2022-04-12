@@ -13,6 +13,21 @@ struct VectorInt
     unsigned long original_capacity; /* the minimum capacity, it's input on construction, and can be modified by resizing. */
 };
 
+/* ========================= helper functions ========================= */
+/* resizes data capacity
+*/
+void resizeData(int **data, unsigned long new_capacity, unsigned long data_size);
+
+void resizeData(int **data, unsigned long new_capacity, unsigned long data_size)
+{
+    int *new_data = (int *) malloc(sizeof(int) * new_capacity);
+    memcpy(new_data, *data, sizeof(int) * data_size);
+    free(*data);
+    *data = new_data;
+}
+
+
+/* ========================= VectorInt ========================= */
 VectorInt* newVectorInt(unsigned long sz)
 {
     VectorInt *v = (VectorInt *) malloc(sizeof(VectorInt));
@@ -66,6 +81,35 @@ void copyVectorInt(VectorInt *src_v, struct VectorInt **dst_v)
     }
 }
 
+void pushVectorInt(VectorInt *v, int value)
+{
+    if(v->size == v->capacity)
+    {
+        v->capacity *= 2;
+        resizeData(&v->data, v->capacity, v->size);
+    }
+    v->data[v->size] = value;
+    ++(v->size);
+}
+
+int popVectorInt(VectorInt *v)
+{
+    int val;
+
+    --(v->size);
+    val = v->data[v->size];
+
+    if(v->size < (1/3) * v->capacity && v->capacity != v->original_capacity)
+    {
+        if(v->capacity / 2 >= v->original_capacity)
+            v->capacity = v->capacity / 2;
+        else
+            v->capacity = v->original_capacity;
+        resizeData(&v->data, v->capacity, v->size);
+    }
+    return val;
+}
+
 #ifdef _DEBUG
 void printVectorInt(VectorInt * v)
 {
@@ -82,4 +126,4 @@ void printVectorInt(VectorInt * v)
         printf("%d, ", v->data[i]);
     printf("%d ]\n", v->data[i]);
 }
-#endif /* _DEBUG */
+#endif
