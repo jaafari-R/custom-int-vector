@@ -53,7 +53,7 @@ void copyVectorInt(VectorInt *src_v, struct VectorInt *dst_v)
 }
 
 #ifdef _DEBUG
-void vectorPrint(VectorInt * v)
+void printVectorInt(VectorInt * v)
 {
     unsigned long long i;
     printf("vector_size = %llu, vector_capacity = %llu, vector_original_capacity = %llu, vector_data = %llu,\n", v->size,
