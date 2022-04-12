@@ -1,4 +1,5 @@
 #include "stdlib.h"
+#include "stdio.h"
 
 #include "vector_int.h"
 
@@ -56,9 +57,9 @@ void copyVectorInt(VectorInt *src_v, struct VectorInt *dst_v)
 void printVectorInt(VectorInt * v)
 {
     unsigned long i;
-    printf("vector_size = %llu, vector_capacity = %llu, vector_original_capacity = %llu, vector_data = %llu,\n", v->size,
+    printf("vector_size = %lu, vector_capacity = %lu, vector_original_capacity = %lu, vector_data = %lu,\n", v->size,
         v->capacity, v->original_capacity, (unsigned long)(v->data));
-    printf("[ ")
+    printf("[ ");
     for(i = 0; i < v->size - 1; i++)
         printf("item %lu = %d, ", i, v->data[i]);
     printf("item %lu = %d ]\n", i, v->data[i]);
