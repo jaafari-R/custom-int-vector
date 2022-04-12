@@ -15,6 +15,8 @@ struct VectorInt
 VectorInt* newVectorInt(unsigned long sz)
 {
     VectorInt *v = (VectorInt *) malloc(sizeof(VectorInt));
+    if(sz < 0) sz = 0;
+
     v->capacity = sz;
     v->original_capacity = sz;
     v->size = 0;
@@ -30,6 +32,7 @@ void destroyVectorInt(VectorInt* v)
 VectorInt* newFillVectorInt(unsigned long sz, int value)
 {
     VectorInt *v = (VectorInt *) malloc(sizeof(VectorInt));
+    if(sz < 0) sz = 0;
 
     v->capacity = sz;
     v->original_capacity = sz;
