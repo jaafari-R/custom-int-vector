@@ -26,7 +26,11 @@ VectorInt* newVectorInt(unsigned long sz)
 
 void destroyVectorInt(VectorInt* v)
 {
-    if(v->capacity) free(v->data);
+    if(v)
+    {
+        if(v->capacity) free(v->data);
+        free(v);
+    }
 }
 
 VectorInt* newFillVectorInt(unsigned long sz, int value)
@@ -45,17 +49,20 @@ VectorInt* newFillVectorInt(unsigned long sz, int value)
 
 void copyVectorInt(VectorInt *src_v, struct VectorInt **dst_v)
 {
+    /* do nothing if src and dst are the same */
+    if(src_v == *dst_v) return;
     /* empty data */
-    if(!*dst_v) *dst_v = (VectorInt *) malloc(sizeof(VectorInt));
     destroyVectorInt(*dst_v);
+    /* allocate *dst_v if it's null */
+    *dst_v = newVectorInt(src_v->original_capacity);
+
 
     (*dst_v)->capacity = src_v->capacity;
-    (*dst_v)->original_capacity = src_v->original_capacity;
     (*dst_v)->size = src_v->size;
     if((*dst_v)->size)
     {
         (*dst_v)->data = (int *) malloc(sizeof(int) * (*dst_v)->capacity);
-        memcpy((*dst_v)->data, src_v->data, (*dst_v)->size);
+        memcpy((*dst_v)->data, src_v->data, sizeof(int) * (*dst_v)->size);
     }
 }
 
