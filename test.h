@@ -15,6 +15,10 @@ void newVectorIntTEST();
 /* test copyVectorInt function
 */
 void copyVectorIntTEST();
+
+/* test pushVectorInt function
+*/
+void pushVectorIntTEST();
 #endif
 
 #endif

@@ -8,6 +8,7 @@ void runVectorIntTESTS()
 {
     newVectorIntTEST();
     copyVectorIntTEST();
+    pushVectorIntTEST();
 }
 
 void newVectorIntTEST()
@@ -107,6 +108,66 @@ void copyVectorIntTEST()
     destroyVectorInt(vc2);
     destroyVectorInt(vc3);
     destroyVectorInt(vc4);
+}
+
+void pushVectorIntTEST()
+{
+    VectorInt *v1 = newVectorInt(0);
+    VectorInt *v2 = newVectorInt(3);
+    VectorInt *v3 = newFillVectorInt(5, 1);
+
+    printf("\n\n================ pushVectorIntTEST ================\n\n");
+
+
+    printf("---v1---\n");
+    printVectorInt(v1);
+    printf("---v2---\n");
+    printVectorInt(v2);
+    printf("---v3---\n");
+    printVectorInt(v3);
+
+    pushVectorInt(v1, 1);
+    printf("---v1 after adding 1 item---\n");
+    printVectorInt(v1);
+    pushVectorInt(v1, 2);
+    printf("---v1 after adding 2 items---\n");
+    printVectorInt(v1);
+    pushVectorInt(v1, 3);
+    printf("---v1 after adding 3 items---\n");
+    printVectorInt(v1);
+    pushVectorInt(v1, 4);
+    pushVectorInt(v1, 5);
+    printf("---v1 after adding 5 items---\n");
+    printVectorInt(v1);
+
+    pushVectorInt(v2, 9);
+    printf("---v2 after adding 1 item---\n");
+    printVectorInt(v2);
+    pushVectorInt(v2, 9);
+    pushVectorInt(v2, 9);
+    pushVectorInt(v2, 9);
+    printf("---v2 after adding 4 items---\n");
+    printVectorInt(v2);
+    pushVectorInt(v2, -1);
+    pushVectorInt(v2, -2);
+    pushVectorInt(v2, -3);
+    printf("---v2 after adding 7 items---\n");
+    printVectorInt(v2);
+
+    pushVectorInt(v3, 32);
+    printf("---v3 after adding 1 item---\n");
+    printVectorInt(v3);
+    pushVectorInt(v3, 32);
+    pushVectorInt(v3, 32);
+    pushVectorInt(v3, 32);
+    pushVectorInt(v3, 32);
+    pushVectorInt(v3, 32);
+    printf("---v3 after adding 5 items---\n");
+    printVectorInt(v3);
+
+    destroyVectorInt(v1);
+    destroyVectorInt(v2);
+    destroyVectorInt(v3);
 }
 
 #endif

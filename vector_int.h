@@ -39,6 +39,7 @@ void pushVectorInt(VectorInt *vector, int value);
 
 /* Removes the int at the end of the vector and returns it
    halfs vector capacity if the pop is done when the vector size is less than third of the capacity
+   returns 0 if the int vecotr is empty
 */
 int popVectorInt(VectorInt *vector);
  

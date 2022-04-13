@@ -35,7 +35,8 @@ VectorInt* newVectorInt(unsigned long sz)
     v->capacity = sz;
     v->original_capacity = sz ? sz : 1;
     v->size = 0;
-    v->data = NULL;
+    if(sz) v->data = (int *) malloc(sizeof(int) * sz);
+    else v->data = 0; /* nullptr */
     return v;
 }
 
@@ -53,8 +54,8 @@ VectorInt* newFillVectorInt(unsigned long sz, int value)
     VectorInt *v = (VectorInt *) malloc(sizeof(VectorInt));
 
     v->capacity = sz;
-    v->original_capacity = sz ? sz : 1;
     v->size = sz;
+    v->original_capacity = sz ? sz : 1;
     v->data = (int *) malloc(sizeof(int)  * sz);
     /* fill vector with val */
     while(sz--)
@@ -83,6 +84,11 @@ void copyVectorInt(VectorInt *src_v, struct VectorInt **dst_v)
 
 void pushVectorInt(VectorInt *v, int value)
 {
+    if(v->capacity == 0) 
+    {
+        v->capacity = 1;
+        v->data = (int *) malloc(sizeof(int));
+    }
     if(v->size == v->capacity)
     {
         v->capacity *= 2;
@@ -95,6 +101,8 @@ void pushVectorInt(VectorInt *v, int value)
 int popVectorInt(VectorInt *v)
 {
     int val;
+
+    if(!v->size) return 0;
 
     --(v->size);
     val = v->data[v->size];
