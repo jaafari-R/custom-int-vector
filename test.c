@@ -8,7 +8,7 @@ void runVectorIntTESTS()
 {
     newVectorIntTEST();
     copyVectorIntTEST();
-    pushVectorIntTEST();
+    backModifiersVectorIntTEST();
 }
 
 void newVectorIntTEST()
@@ -110,8 +110,9 @@ void copyVectorIntTEST()
     destroyVectorInt(vc4);
 }
 
-void pushVectorIntTEST()
+void backModifiersVectorIntTEST()
 {
+    int i;
     VectorInt *v1 = newVectorInt(0);
     VectorInt *v2 = newVectorInt(3);
     VectorInt *v3 = newFillVectorInt(5, 1);
@@ -165,9 +166,28 @@ void pushVectorIntTEST()
     printf("---v3 after adding 5 items---\n");
     printVectorInt(v3);
 
+
+    printf("\n\n================ popVectorIntTEST ================\n\n");
+
+    for(i = 0; i < 4; ++i)
+        popVectorInt(v1);
+    printf("---v1 after removing 4 items---\n");
+    printVectorInt(v1);
+
+    for(i = 0; i < 4; ++i)
+        popVectorInt(v2);
+    printf("---v2 after removing 4 items---\n");
+    printVectorInt(v2);
+
+    for(i = 0; i < 6; ++i)
+        popVectorInt(v3);
+    printf("---v3 after removing 6 items---\n");
+    printVectorInt(v3);
+
     destroyVectorInt(v1);
     destroyVectorInt(v2);
     destroyVectorInt(v3);
 }
+
 
 #endif

@@ -16,9 +16,9 @@ void newVectorIntTEST();
 */
 void copyVectorIntTEST();
 
-/* test pushVectorInt function
+/* test pushVectorInt and popVectorInt function
 */
-void pushVectorIntTEST();
+void backModifiersVectorIntTEST();
 #endif
 
 #endif

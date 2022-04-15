@@ -107,7 +107,7 @@ int popVectorInt(VectorInt *v)
     --(v->size);
     val = v->data[v->size];
 
-    if(v->size < (1/3) * v->capacity && v->capacity != v->original_capacity)
+    if((v->size < (v->capacity / 3)) && (v->capacity != v->original_capacity))
     {
         if(v->capacity / 2 >= v->original_capacity)
             v->capacity = v->capacity / 2;
