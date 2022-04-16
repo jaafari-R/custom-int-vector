@@ -59,7 +59,12 @@ unsigned long originalCapacityVectorInt(VectorInt * vector);
    if the new capacity is smaller than size, 
     then size is changed to equal capacity and values at the end are removed
 */
-void resize(VectorInt *vector, unsigned long new_capacity);
+void resizeVectorInt(VectorInt *vector, unsigned long new_capacity);
+
+/* returns the item at position index
+    if the index is invalid, -1 is returned
+*/
+int getItemVectorInt(VectorInt *vector, unsigned long index);
 
 #if _DEBUG
 void printVectorInt(VectorInt *v);
