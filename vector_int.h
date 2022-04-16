@@ -55,6 +55,12 @@ unsigned long capacityVectorInt(VectorInt * vector);
 */
 unsigned long originalCapacityVectorInt(VectorInt * vector);
 
+/* Changes vector the capacity and the original capacity to new_capacity,
+   if the new capacity is smaller than size, 
+    then size is changed to equal capacity and values at the end are removed
+*/
+void resize(VectorInt *vector, unsigned long new_capacity);
+
 #if _DEBUG
 void printVectorInt(VectorInt *v);
 #endif

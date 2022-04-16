@@ -133,6 +133,15 @@ unsigned long originalCapacityVectorInt(VectorInt * v)
     return v->original_capacity;
 }
 
+void resize(VectorInt *v, unsigned long new_capacity)
+{
+    int *new_data = (int *)malloc(sizeof(int) * new_capacity);
+    if(v->size < new_capacity)
+        v->size = new_capacity;
+    memcpy(new_data, v->data, v->size * sizeof(int));
+    v->data = new_data;
+}
+
 #ifdef _DEBUG
 void printVectorInt(VectorInt * v)
 {
