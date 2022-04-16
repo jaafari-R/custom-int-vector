@@ -42,7 +42,18 @@ void pushVectorInt(VectorInt *vector, int value);
    returns 0 if the int vecotr is empty
 */
 int popVectorInt(VectorInt *vector);
- 
+
+/* returns the vector size
+*/
+unsigned long sizeVectorInt(VectorInt *vector);
+
+/* returns the vector capacity
+*/
+unsigned long capacityVectorInt(VectorInt * vector);
+
+/* returns the vector original capacity
+*/
+unsigned long originalCapacityVectorInt(VectorInt * vector);
 
 #if _DEBUG
 void printVectorInt(VectorInt *v);

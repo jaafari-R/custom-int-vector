@@ -118,6 +118,21 @@ int popVectorInt(VectorInt *v)
     return val;
 }
 
+unsigned long sizeVectorInt(VectorInt *v)
+{
+    return v->size;
+}
+
+unsigned long capacityVectorInt(VectorInt * v)
+{
+    return v->capacity;
+}
+
+unsigned long originalCapacityVectorInt(VectorInt * v)
+{
+    return v->original_capacity;
+}
+
 #ifdef _DEBUG
 void printVectorInt(VectorInt * v)
 {
