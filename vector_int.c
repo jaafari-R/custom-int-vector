@@ -149,6 +149,21 @@ int getItemVectorInt(VectorInt *v, unsigned long i)
     return -1;
 }
 
+void insertVectorInt(VectorInt *v, unsigned long i, int val)
+{
+    unsigned long sz;
+    if(v->size == v->capacity)
+    {
+        v->capacity *= 2;
+        resizeData(&v->data, v->capacity, v->size);
+    }
+    ++v->size;
+    sz = v->size + 1;
+    while(--sz != i)
+        v->data[sz] = v->data[sz - 1];
+    v->data[i] = val;
+}
+
 #ifdef _DEBUG
 void printVectorInt(VectorInt * v)
 {

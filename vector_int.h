@@ -66,6 +66,12 @@ void resizeVectorInt(VectorInt *vector, unsigned long new_capacity);
 */
 int getItemVectorInt(VectorInt *vector, unsigned long index);
 
+/* inserts value at index in vector
+    shifts all items at index and after it by 1
+    increases vector size by 1
+*/
+void insertVectorInt(VectorInt *vector, unsigned long index, int value);
+
 #if _DEBUG
 void printVectorInt(VectorInt *v);
 #endif
