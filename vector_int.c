@@ -17,6 +17,10 @@ struct VectorInt
 /* resizes data capacity
 */
 void resizeData(int **data, unsigned long new_capacity, unsigned long data_size);
+/* Reduces the capacity of the vector by half if its size is less than third of its capacity,
+    capacity can't be less than original capacity
+*/
+void downSize();
 
 void resizeData(int **data, unsigned long new_capacity, unsigned long data_size)
 {
@@ -24,6 +28,18 @@ void resizeData(int **data, unsigned long new_capacity, unsigned long data_size)
     memcpy(new_data, *data, sizeof(int) * data_size);
     free(*data);
     *data = new_data;
+}
+
+void downSize(VectorInt *v)
+{
+    if((v->size < (v->capacity / 3)) && (v->capacity != v->original_capacity))
+    {
+        if(v->capacity / 2 >= v->original_capacity)
+            v->capacity = v->capacity / 2;
+        else
+            v->capacity = v->original_capacity;
+        resizeData(&v->data, v->capacity, v->size);
+    }
 }
 
 
@@ -107,14 +123,7 @@ int popVectorInt(VectorInt *v)
     --(v->size);
     val = v->data[v->size];
 
-    if((v->size < (v->capacity / 3)) && (v->capacity != v->original_capacity))
-    {
-        if(v->capacity / 2 >= v->original_capacity)
-            v->capacity = v->capacity / 2;
-        else
-            v->capacity = v->original_capacity;
-        resizeData(&v->data, v->capacity, v->size);
-    }
+    downSize(v);
     return val;
 }
 
@@ -157,11 +166,26 @@ void insertVectorInt(VectorInt *v, unsigned long i, int val)
         v->capacity *= 2;
         resizeData(&v->data, v->capacity, v->size);
     }
-    ++v->size;
+    ++(v->size);
     sz = v->size + 1;
     while(--sz != i)
         v->data[sz] = v->data[sz - 1];
     v->data[i] = val;
+}
+
+int eraseVectorInt(VectorInt *v, unsigned long i)
+{
+    int res;
+    if(i >= v->size)
+        return -1;
+    
+    res = v->data[i];
+    --(v->size);
+    downSize(v);
+    --i;
+    while(++i < v->size - 1)
+        v->data[i] = v->data[i + 1];
+    return res;
 }
 
 #ifdef _DEBUG
