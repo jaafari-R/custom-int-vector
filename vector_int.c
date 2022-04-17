@@ -161,6 +161,9 @@ int getItemVectorInt(VectorInt *v, unsigned long i)
 void insertVectorInt(VectorInt *v, unsigned long i, int val)
 {
     unsigned long sz;
+    if(v->size < i)
+        while(v->size != i)
+            pushVectorInt(v, 0);
     if(v->size == v->capacity)
     {
         v->capacity *= 2;

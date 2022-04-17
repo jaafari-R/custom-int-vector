@@ -75,6 +75,9 @@ void insertVectorInt(VectorInt *vector, unsigned long index, int value);
 /* removes the value at index from vector and returns it.
     all items after index are shifted back by 1
     reduce vector size by 1
+    if the insertion index is higher than index,
+     Zeros are pushed into the vector until index is reached,
+     then value is inserted at index
 */
 int eraseVectorInt(VectorInt *vector, unsigned long index);
 
